@@ -16,7 +16,7 @@ public class mousefollow  : MonoBehaviour
 
         Vector3 currentMousePosition = Mouse.current.position.ReadValue();
 
-       Vector3 worldMousePositon =  gamecamera.ScreenToWorldPoint(currentMousePosition);
+        Vector3 worldMousePositon =  gamecamera.ScreenToWorldPoint(currentMousePosition);
         worldMousePositon.z = 0;
         transform.position = worldMousePositon;
 
