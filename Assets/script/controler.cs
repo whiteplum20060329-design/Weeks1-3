@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class controler : MonoBehaviour
 {
-    public float speed;
-    public float rotationSpeed;
+    public float moveSpeed;
+    public float rotateSpeed;
     public SpriteRenderer sprite;
     public Color startingColour;
     public Camera gameCamera;
@@ -36,7 +36,7 @@ Vector3 worldMouse = gameCamera.ScreenToWorldPoint(currentMousePosition);
 
 worldMouse.z = 0;
 
-    bool left = Mouse.current.leftButton.isPressed;
+    bool left = Mouse.current.leftButton.wasPressedThisFrame;
 
         if (left)
         {
@@ -52,40 +52,34 @@ worldMouse.z = 0;
             }
         }
 
-        for (int i = 0; i < controlledTransforms.Count;i ++)
+        for (int i = 0; i < controlledTransforms.Count; i++)
         {
             Transform currentTransform = controlledTransforms[i];
-            bool goleft = Keyboard.current.leftArrowKey.isPressed;
-            if (goleft)
+            bool leftArrowHeld = Keyboard.current.leftArrowKey.isPressed;
+            bool rightArrowHeld = Keyboard.current.rightArrowKey.isPressed;
+            bool upArrowHeld = Keyboard.current.upArrowKey.isPressed;
+            bool downArrowHeld = Keyboard.current.downArrowKey.isPressed;
+            if (leftArrowHeld)
             {
-                transform.eulerAngles += transform.forward * rotationSpeed * Time.deltaTime;
-
+                currentTransform.eulerAngles += currentTransform.forward * rotateSpeed * Time.deltaTime;
             }
-            bool goright = Keyboard.current.rightArrowKey.isPressed;
-            if (goright)
+            if (rightArrowHeld)
             {
-                transform.eulerAngles -= transform.forward * rotationSpeed * Time.deltaTime;
+                currentTransform.eulerAngles -= currentTransform.forward * rotateSpeed * Time.deltaTime;
             }
-
-
-
-            bool goup = Keyboard.current.upArrowKey.isPressed;
-            if (goup)
+            if (upArrowHeld)
             {
-                transform.position += transform.up * speed * Time.deltaTime;
+                currentTransform.position += currentTransform.up * moveSpeed * Time.deltaTime;
             }
-            bool godown = Keyboard.current.downArrowKey.isPressed;
-            if (godown)
+            if (downArrowHeld)
             {
-                transform.position -= transform.up * speed * Time.deltaTime;
+                currentTransform.position -= currentTransform.up * moveSpeed * Time.deltaTime;
             }
-
         }
 
 
 
 
-    
 
     }
 }
