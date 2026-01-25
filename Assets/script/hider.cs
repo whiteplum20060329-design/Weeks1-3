@@ -24,7 +24,7 @@ public class hider : MonoBehaviour
         //Vector3 worldMousePosition = gameCamera.ScreenToWorldPoint(currentMousePosition);
         //worldMousePosition.z = 0f;
 
-        //float distanceToMouse=Vector3.Distance(currentMousePosition, transform.position);
+        //float distanceToMouse=Vector3.Distance(worldMousePosition, transform.position);
 
         //if (distanceToMouse < hideDistance)
         //{

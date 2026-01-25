@@ -20,11 +20,11 @@ public class tankmover : MonoBehaviour
 
         if (leftArrowHeld)
         {
-            transform.position -= transform.up* speed * Time.deltaTime;
+            transform.position -= transform.right* speed * Time.deltaTime;
         }
         if (rightArrowHeld)
         {
-            transform.position += transform.up* speed * Time.deltaTime;
+            transform.position += transform.right* speed * Time.deltaTime;
         }
 
 
@@ -32,7 +32,7 @@ public class tankmover : MonoBehaviour
 
         Vector3 screenTransformPosition = gamecamera.WorldToScreenPoint(transform.position);
         xmax = Screen.width;
-
+         
         //set xMin to wherever is too far to the left for the player to see
         xmin = 0;
 
