@@ -1,11 +1,10 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class waterdrop : MonoBehaviour
+public class bee : MonoBehaviour
 {
-    public Vector3 startValue;
-    public Transform endValue;
+    public Transform startValue;
+    public Vector3 endValue;
     public Transform outValue;
 
     public Vector3 output;
@@ -20,16 +19,16 @@ public class waterdrop : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       Vector3 MousePos = Mouse.current.position.ReadValue();
-        startValue = gameCamera.ScreenToWorldPoint(MousePos);
-        startValue.z = 0;
-        float distanceToMouse = Vector3.Distance(startValue, endValue.position);
+        Vector3 MousePos = Mouse.current.position.ReadValue();
+        endValue = gameCamera.ScreenToWorldPoint(MousePos);
+        endValue.z = 0;
+        float distanceToMouse = Vector3.Distance(startValue.position, endValue);
 
         if (distanceToMouse < Distance)    // If the mouse is close enough to the flower,
         // the scaling animation will be triggered.
@@ -47,14 +46,15 @@ public class waterdrop : MonoBehaviour
 
             // Interpolate between the mouse position and the target position
             // The animation curve is used to make the movement feel more natural
-            output = Vector3.Lerp(startValue, endValue.position, curve.Evaluate(t));
+            output = Vector3.Lerp(startValue.position, endValue, curve.Evaluate(t));
             transform.position = output;
         }
         else
-        {    // If the mouse is too far away, move the water drop off screen
-            // This hides the water drop when it is not interacting with the player
+        {    // If the mouse is too far away, move the bee off screen
+            // This hides the bee when it is not interacting with the player
             transform.position = outValue.position;
         }
 
     }
 }
+
