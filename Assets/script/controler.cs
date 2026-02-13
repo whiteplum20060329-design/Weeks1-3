@@ -54,6 +54,7 @@ worldMouse.z = 0;
 
         for (int i = 0; i < controlledTransforms.Count; i++)
         {
+            
             Transform currentTransform = controlledTransforms[i];
             bool leftArrowHeld = Keyboard.current.leftArrowKey.isPressed;
             bool rightArrowHeld = Keyboard.current.rightArrowKey.isPressed;
